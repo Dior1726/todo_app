@@ -6,7 +6,7 @@
 
     <div class="todo__box">
       <div class="todo__box-create">
-        <a-row type="flex" justify="center" :gutter="16">
+        <a-row type="flex" justify="center">
           <a-col :span="12">
             <a-input 
               @keyup.enter="addTodo()"
@@ -17,11 +17,10 @@
               v-model="todoText" 
             />
           </a-col>
-          <a-col :span="4">
+          <a-col :span="4" class="d-flex">
             <a-button 
               class="todo__box-button" 
-              size="large" 
-              block
+              size="large"
               @click.prevent="addTodo()"
             >
               <a-icon type="plus" />
@@ -65,6 +64,11 @@ export default {
     todoText: "",
     todos: []
   }),
+  created() {
+    if (localStorage.getItem('todos') === null) {
+      localStorage.setItem("todos", JSON.stringify([]))
+    }
+  },
   mounted() {
     this.GET_TODOS()
     this.todos = this.TODOS
@@ -135,11 +139,19 @@ export default {
     border-bottom: 2px solid #57c2a2;
   }
 
+  &-input {
+    background: rgba(255, 255, 255, .3);
+    border-color: transparent;
+    color: #fff;
+    font-size: 18px;
+  }
+
   &-button {
     background-color: #57c2a2;
     color: #fff;
     border-color: #57c2a2;
     transition: .3s;
+    min-width: 48px;
 
     &:hover {
       border-color: #5edbb6;
@@ -153,5 +165,10 @@ export default {
     width: 80%;
     padding: 20px 0;
   }
+}
+
+.d-flex {
+  display: flex;
+  justify-content: end;
 }
 </style>

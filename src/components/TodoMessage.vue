@@ -12,6 +12,7 @@
 
 <style lang="scss" scoped>
 .todo__box-message {
+    padding:0 15px;
     margin-top: 20px;
         h3 {
         color: #fff;
