@@ -1,0 +1,9 @@
+body {
+    background: linear-gradient(120deg, #42b883, #35495e);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.text-center {
+    text-align: center;
+}
